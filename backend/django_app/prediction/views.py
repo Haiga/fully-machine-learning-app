@@ -10,7 +10,7 @@ from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 # Class based view to predict based on IRIS model
-class IRIS_Model_Predict(APIView):
+class Iris_Model_Predict(APIView):
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     
