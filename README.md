@@ -12,3 +12,14 @@ To setup a local postgres DB with Docker
 ```
 docker run --name container_postgres_prediction -e POSTGRES_PASSWORD=123456 -e POSTGRES_DB=predictiondb -d -p 5432:5432 postgres
 ```
+
+
+### See more Material UI examples in:
+
+```
+https://material-ui.com/
+```
+
+```
+https://material-ui.com/pt/getting-started/templates/
+```
