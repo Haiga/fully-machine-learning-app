@@ -1,4 +1,4 @@
-from rest_auth.views import (LoginView, LogoutView)
+from rest_auth.views import (LoginView, LogoutView, PasswordChangeView)
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
@@ -9,3 +9,6 @@ class APILogoutView(LogoutView):
 
 class APILoginView(LoginView):
     pass
+
+class APIPasswordUpdateView(PasswordChangeView):
+    authentication_classes = [TokenAuthentication]
