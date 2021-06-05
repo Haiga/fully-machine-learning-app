@@ -13,6 +13,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
+import { connect } from 'react-redux';
+import * as actions from '../store/authActions';
+
+import { useHistory, useLocation } from "react-router-dom";
+
+
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -46,8 +52,32 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Login() {
+function Login(props) {
+  const [username, setuserName] = React.useState(null);
+  const [password, setPassword] = React.useState(null);
   const classes = useStyles();
+
+  const handleFormFieldChange = (event) => {
+    switch (event.target.id) {
+      case 'username': setuserName(event.target.value); break;
+      case 'password': setPassword(event.target.value); break;
+      default: return null;
+    }
+
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.onAuth(username, password);
+  }
+
+  let history = useHistory();
+  let location = useLocation();
+  let { from } = location.state || { from: { pathname: "/" } };
+
+  React.useEffect(() => {
+    if (props.isAuthenticated) { history.replace(from) };
+  });
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,7 +89,7 @@ export default function Login() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -70,6 +100,7 @@ export default function Login() {
             name="username"
             autoComplete="username"
             autoFocus
+            onChange={handleFormFieldChange}
           />
           <TextField
             variant="outlined"
@@ -81,6 +112,7 @@ export default function Login() {
             type="password"
             id="password"
             autoComplete="current-password"
+            onChange={handleFormFieldChange}
           />
 
           <Button
@@ -95,7 +127,16 @@ export default function Login() {
 
         </form>
       </div>
-      
+
     </Container>
   );
 }
+
+
+const mapDispatchToProps = dispatch => {
+  return {
+      onAuth: (username, password) => dispatch(actions.authLogin(username, password)) 
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Login);

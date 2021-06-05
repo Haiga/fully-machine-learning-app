@@ -23,3 +23,10 @@ https://material-ui.com/
 ```
 https://material-ui.com/pt/getting-started/templates/
 ```
+
+
+### Run django backend
+
+```
+python manage.py createsuperuser
+```
