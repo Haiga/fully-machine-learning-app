@@ -4,5 +4,6 @@
 
 ## Add Page for Regression Methods
 
+## Add message when password is too weak, instead of alert
 ...
 Also, remove all unnecessary files in ...

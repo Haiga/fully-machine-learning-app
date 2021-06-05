@@ -6,6 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -28,7 +30,11 @@ export default function TopBar(props) {
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
                         Iris Species Predictor
-            </Typography>
+                    </Typography>
+                    <IconButton aria-label="home page" color="inherit" href="/">
+                        <HomeIcon />
+                    </IconButton>
+                    {props.isAuthenticated ? <Button color="inherit" href="/update_password">Update Password</Button> : null}
                     {props.isAuthenticated ? <Button color="inherit" onClick={() => props.logout()}>Logout</Button> : null}
                 </Toolbar>
             </AppBar>
