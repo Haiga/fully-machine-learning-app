@@ -30,3 +30,9 @@ https://material-ui.com/pt/getting-started/templates/
 ```
 python manage.py createsuperuser
 ```
+
+## With docker
+
+```
+docker-compose up
+```
