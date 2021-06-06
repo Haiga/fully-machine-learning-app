@@ -7,6 +7,9 @@ Based on:
 ```
 https://datagraphi.com/blog/post/2020/8/30/docker-guide-build-a-fully-production-ready-machine-learning-app-with-react-django-and-postgresql-on-docker
 ```
+```
+https://github.com/MausamGaurav
+```
 
 To setup a local postgres DB with Docker
 ```
